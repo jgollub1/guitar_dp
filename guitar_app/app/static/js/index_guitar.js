@@ -21,22 +21,6 @@ for (var i=0; i < notes.e.length; i++){
 	$('.mask.high-e ul').append('<li note='+notes.e[i]+'></li>')
 }
 
-// var MidiPlayer = require('midi-player-js');
-// // Initialize player and register event handler
-// var Player = new MidiPlayer.Player(function(event) {
-// 	console.log(event);
-// });
-
-// Player.on('midiEvent', function(event) {
-// 	alert('event...');
-//     // Do something when a MIDI event is fired.
-//     // (this is the same as passing a function to MidiPlayer.Player() when instantiating.
-// });
-
-// // Load a MIDI file
-// Player.loadFile('cheryl.mid');
-// Player.play();
-
 $('.controls a.down').click(function(){
 	if(!canClick){return false;}
 	canClick = false;
@@ -110,34 +94,59 @@ function changeOpenNotes(){
 	});
 }
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+// function sleep(ms) {
+//   return new Promise(resolve => setTimeout(resolve, ms));
+// }
+
+// function stateChange(newState) {
+//     setTimeout(function () {
+//         if (newState == -1) {
+//             alert('VIDEO HAS STOPPED');
+//         }
+//     }, 5000);
+// }
+
+
+function playNotes(sequence){
+	alert(sequence.length);
+	for (var i=0; i < sequence.length; i++){
+		$('.guitar-neck .notes li').not('[note="'+sequence[i]+'"]').animate({opacity:0}, 500);
+		$('.guitar-neck .notes li[note="'+sequence[i]+'"]').animate({opacity:1}, 500);
+	}
+	// alert('before')
+	// alert(sequence[i])
+	// await sleep(1000);
+	// setTimeout(playNotes, 5000);
+	// stateChange(1);
+	
+	// alert('after')
+	// $('.guitar-neck .notes li[note="'+sequence[i]+'"]').animate({opacity:0}, 500);
+	// showNotes(sequence[i]);		
+	// await sleep(1000);
 }
 
-function stateChange(newState) {
-    setTimeout(function () {
-        if (newState == -1) {
-            alert('VIDEO HAS STOPPED');
-        }
-    }, 5000);
-}
+var MidiPlayer = require('midi-player-js');
+// Initialize player and register event handler
+var Player = new MidiPlayer.Player(function(event) {
+	console.log(event);
+});
 
-// function playNotes(sequence){
-// 	// alert(sequence.length);
-// 	for (var i=0; i < sequence.length; i++){
-// 		$('.guitar-neck .notes li').not('[note="'+sequence[i]+'"]').animate({opacity:0}, 500);
-// 		$('.guitar-neck .notes li[note="'+sequence[i]+'"]').animate({opacity:1}, 500);
-// 		// alert('before')
-// 		// alert(sequence[i])
-// 		// await sleep(1000);
-// 		// setTimeout(playNotes, 5000);
-// 		// stateChange(1);
-		
-// 		// alert('after')
-// 		// $('.guitar-neck .notes li[note="'+sequence[i]+'"]').animate({opacity:0}, 500);
-// 		// showNotes(sequence[i]);		
-// 		// await sleep(1000);
-// 	}
+Player.on('playing', function(currentTick) {
+    alert('we playin boy');
+});
+
+// Player.on('midiEvent', function(event) {
+// 	alert('event...');
+//     // Do something when a MIDI event is fired.
+//     // (this is the same as passing a function to MidiPlayer.Player() when instantiating.
+// });
+
+// // Load a MIDI file
+Player.loadFile('cheryl.mid');
+Player.play();
+
+// function alert_hi(){
+// 	alert('what the fuck is up man');
 // }
 
 // alert('hey you man')
@@ -146,6 +155,7 @@ function stateChange(newState) {
 // alert({{Object.keys(sequence)}})
 // alert({{sequence[1]}})
 // test out the sequence player
-// playNotes({{ notes|safe }})
+// playNotes({{ notes|safe }});
+// alert_hi();
 
 
