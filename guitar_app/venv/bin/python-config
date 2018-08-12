@@ -1,4 +1,4 @@
-#!/Users/jacobgollub/Desktop/guitar_app/venv/bin/python
+#!/Users/jacobgollub/Desktop/github_repos/guitar_app/venv/bin/python
 
 import sys
 import getopt
