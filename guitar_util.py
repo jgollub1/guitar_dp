@@ -1,11 +1,11 @@
 from collections import defaultdict
-import midi
+import midi # run 'pip install python-midi' in venv
 import sys
 
 STARTS = [53,58,63,68,72,77] # starts on first fret of each string
 RANGES = [12,12,12,14,18,18] # fret range of each string
 FINGERS = [1,2,3,4]
-NOTE_COUNT = 50
+NOTE_COUNT = 1000
 
 # just consider fret and finger 
 def compute_cost(tup1, tup2):
