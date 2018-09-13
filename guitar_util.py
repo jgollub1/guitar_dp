@@ -5,7 +5,7 @@ import sys
 STARTS = [53,58,63,68,72,77] # starts on first fret of each string
 RANGES = [12,12,12,14,18,18] # fret range of each string
 FINGERS = [1,2,3,4]
-NOTE_COUNT = 1000
+# NOTE_COUNT = 1000
 
 # just consider fret and finger 
 def compute_cost(tup1, tup2):
@@ -60,7 +60,7 @@ def generate_path(fname):
 	final_paths = compute_path(sequence)
 	sorted_paths = sorted(final_paths.values(), key=lambda x: x[0])
 	optimal_path = sorted_paths[0][1]
-	return optimal_path[:NOTE_COUNT]
+	return optimal_path
 
 def reformat(path):
 	return [".".join([str(string), str(fret)]) for string, fret, finger in path]
