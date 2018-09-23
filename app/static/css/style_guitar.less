@@ -1,10 +1,20 @@
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7g.ttf) format('truetype');
-}
-/* should be 80 - note-height for now */
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400);
+
+
+@main-bg-color: brown;
+@neck-height: 960px;
+@neck-width: 280px;
+@neck-color: #211f1d;
+@dot-color: #755628;
+@note-color: #7C0A02;
+@note-height: 28px;
+@string-color: #A9A9A9;
+@fret-color: #663330;
+@fret-spacing: 75px;
+@note-spread: 52px; /* should be 80 - note-height for now */
+@string-step: 37px;
+@string-offset: -8px;
+
 * {
   margin: 0;
   padding: 0;
@@ -28,9 +38,9 @@ h1 {
   margin-top: 40px;
   left: 50%;
   margin-left: -450px;
-  width: 280px;
-  height: 960px;
-  background: #211f1d;
+  width: @neck-width;
+  height: @neck-height;
+  background: @neck-color;
   box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.75);
 }
 .guitar-neck .open-notes {
@@ -52,8 +62,8 @@ h1 {
   float: left;
   width: 100%;
   height: 3px;
-  background: #663330;
-  margin-bottom: 75px;
+  background: @fret-color;
+  margin-bottom: @fret-spacing;
   border-top: 2px solid #686868;
 }
 .guitar-neck .fret.first {
@@ -62,7 +72,7 @@ h1 {
   left: 0px;
   top: 0;
   margin-bottom: 0;
-  background: #755628;
+  background: @dot-color;
 }
 .guitar-neck .dots {
   position: absolute;
@@ -81,7 +91,7 @@ h1 {
 }
 .guitar-neck .strings {
   position: absolute;
-  left: -8px;
+  left: @string-offset;
   top: 3px;
   width: 100%;
   height: 100%;
@@ -90,8 +100,8 @@ h1 {
   height: 100%;
   display: inline-block;
   width: 6px;
-  background: #A9A9A9;
-  margin-left: 37px;
+  background: @string-color;
+  margin-left: @string-step;
   border-bottom: 2px solid #958963;
   box-sizing: border-box;
 }
@@ -112,8 +122,7 @@ h1 {
 }
 .guitar-neck .notes {
   position: absolute;
-  left: -8px;
-  /* how offset it is from neck */
+  left: @string-offset; /* how offset it is from neck */
   top: 0;
   width: 100%;
   height: 100%;
@@ -122,8 +131,7 @@ h1 {
 .guitar-neck .notes .mask {
   position: absolute;
   /*margin-left: @string-step;*/
-  /*left: @string-offset;*/
-  /* how offset it is from the note*/
+  /*left: @string-offset;*/  /* how offset it is from the note*/
   top: 0;
   width: 30px;
   height: 1184px;
@@ -131,21 +139,18 @@ h1 {
 .guitar-neck .notes .mask ul {
   position: relative;
   float: top;
-  left: 40%;
-  /* how offset it is from the note*/
-  top: -0.5%;
-  margin-top: 35px;
-  /* how far below top fret */
+  left: 40%; /* how offset it is from the note*/
+  top: -.5%;
+  margin-top: 35px; /* how far below top fret */
 }
 .guitar-neck .notes .mask ul li {
   float: top;
-  width: 28px;
-  height: 28px;
+  width: @note-height;
+  height: @note-height;
   /*left: 20%;*/
-  margin-bottom: 52px;
-  /* controls fret distance of notes (in addition to note height)*/
+  margin-bottom: @note-spread; /* controls fret distance of notes (in addition to note height)*/
   margin-left: 50%;
-  background: #7C0A02;
+  background: @note-color;
   color: #fff;
   border-radius: 50%;
   text-align: center;

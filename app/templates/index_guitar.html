@@ -2,9 +2,10 @@
 <html lang="en" >
 
 <head>
-  <meta charset="UTF-8">
-  <!-- <title>Guitar Fretboard Visualization</title> -->
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="static/css/style_guitar.css">
+    <!-- <link rel="stylesheet/less" type="text/css" href="styles.less" /> -->
+    <link rel="stylesheet" href="static/css/animate.min.css">
     {% if title %}
     <title>{{ title }} - Guitar</title>
     {% else %}
@@ -13,8 +14,7 @@
 </head>
 
 <body>
-  <h1>Guitar Fretboard Visualization (adapted from Miguel Grinberg, midi-player-js, codepen.io)</h1>
-    <div class="guitar-neck">
+    <div class="guitar-neck" style="display: inline-block; float: left">
         <div class="fret first"></div>
         <div class="fret"></div>
         <div class="fret"></div>
@@ -86,32 +86,17 @@
     </div> -->
 
 
-<!-- // abbreviated version
-    <h4>Choose a Midi File</h4>
-    <p id="select-file">
-        <input type="file" onchange="loadFile()" onclick="Player.stop()" />
-    </p>
-    <p id="loading">Loading soundfont...</p>
-    <div style="border:1px solid #ccc;margin-bottom:12px;background:#f7f7f7;">
-        <div id="play-bar" style="height:20px;background:#33C3F0;width:0%;"></div>
-    </div>
-    <p>
-        <button class="button button-primary" id="play-button" onclick="Player.isPlaying() ? pause() : play();" disabled="disabled">Play</button>
-        <button class="button" onclick="stop()">Stop</button>
-    </p> -->
-
-<!-- TODO: integrate this into the app -->
-     <div class="container" style="padding-top:12px;">
+    <div class="container" style="padding-top: 12px; display: inline-block; float: left; margin-left: 40%;">
             <div class="row">
                 <div class="twelve columns">
-                    <h1>&#9836; MidiPlayerJS</h1>
-                    <p>MidiPlayerJS is a javascript library which triggers events in sequence with a given MIDI file.  This MIDI player was built using <a href="https://github.com/grimmdude/MidiPlayerJS">MidiPlayerJS</a> to read the file, and <a href="https://github.com/danigb/soundfont-player">soundfont-player</a> to load and play the sounds.</p>
-                    <h4>Choose a Midi File</h4>
-                    <p id="select-file">
+                    <h1 class="animated bounce delay-.5s">🎸 MIDI Guitar Hero</h1>
+                    <p style="margin-right: 10%; margin-top: 10px;">Upload a MIDI file of your favorite melody. This solver uses a dynamic programming algorithm to compute a corresponding path across the fretboard. Adapted from Miguel Grinberg's <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">flask tutorial</a>, <a href="https://github.com/grimmdude/MidiPlayerJS">MidiPlayerJS</a>, <a href="https://codepen.io/DreySkee/pen/bddpqM">Guitar Fretboard Visualization</a>, and <a href="https://codepen.io/oknoblich/pen/tfjFl">Responsive CSS Tabs</a>.</p>
+                    <h4 style="margin-top: 2%;">Choose a Midi File</h4>
+                    <p id="select-file" style="margin-top: 1%;">
                         <input type="file" onchange="loadFile()" onclick="Player.stop()" />
                     </p>
                     <p id="loading">Loading soundfont...</p>
-                    <div style="border:1px solid #ccc;margin-bottom:12px;background:#f7f7f7;">
+                    <div style="border:1px solid #ccc;margin-bottom:12px;background:#f7f7f7; margin-top: 2%; margin-right: 15%;">
                         <div id="play-bar" style="height:20px;background:#33C3F0;width:0%;"></div>
                     </div>
                     <p>
@@ -119,19 +104,20 @@
                         <button class="button" onclick="stop()">Stop</button>
                     </p>
                     
-                    <h4>Tempo</h4>
-                    <p>
+                    <h4 style="margin-top: 2%;">Tempo</h4>
+                    <p style="margin-top: 1%;">
                         <input id="test" type="range" min="50" max="200" value="100" onchange="changeTempo(this.value)" style="width:200px;" />
                     </p>
-                    <hr />
-                    <p>
+                    <!-- <hr /> -->
+                    <p style="margin-top: 2%;">
                         Tempo: <span id="tempo-display"></span> bpm<br />
-                        <input type="range" onchange="Player.pause();Player.setTempo(this.value);Player.play()" min="50" max="200">
+                        <input style="margin-top: 1%;" type="range" onchange="Player.pause();Player.setTempo(this.value);Player.play()" min="50" max="200">
+                        <br />
                         <br />
                         MIDI File Format: <span id="file-format-display"></span>
                     </p>
-                    <div id="events" class="well"></div>
-                    <p>By <a href="gollub.me">Jacob Gollub</a></p>
+                    <div id="events" class="well" style="margin-top: 1%;"></div>
+                    <p style="margin-top: 1%;">By <a href="//gollub.me">Jacob Gollub</a></p>
                 </div>
             </div>
         </div> 

@@ -44,8 +44,9 @@ def compute_path(sequence):
 	return final_paths[i+1]
 
 def generate_path(fname):
-	events = midi.read_midifile("cheryl.mid")[0]
-	notes = [event.data[0] for event in events if event.name == "Note On"]
+	events = midi.read_midifile(fname)[0]
+	notes = [event.data[0] for event in events if event.name == "Note On"] # add 12 move up an octave for guitar
+	print 'note length', len(notes)
 
 	string_d = defaultdict(list)
 	for i, start in enumerate(STARTS):
