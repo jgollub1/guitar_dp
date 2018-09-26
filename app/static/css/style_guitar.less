@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400);
-
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 @main-bg-color: brown;
 @neck-height: 960px;
@@ -14,6 +14,8 @@
 @note-spread: 52px; /* should be 80 - note-height for now */
 @string-step: 37px;
 @string-offset: -8px;
+@window-offset: 40%;
+@title-offset: 45%;
 
 * {
   margin: 0;
@@ -21,7 +23,7 @@
   list-style-type: none;
 }
 body {
-  background: #eee;
+  background: #F1F4F7;
   font-family: 'Source Sans Pro', sans-serif;
   letter-spacing: 0.05em;
 }
@@ -29,9 +31,18 @@ h1 {
   text-transform: uppercase;
   text-align: left;
   margin-top: 40px;
-  margin-left: 10%;
+  margin-left: @title-offset;
   color: #758A9A;
+  margin-bottom: 3%;
 }
+.container {
+  padding-top: 12px;
+  display: inline-block;
+  float: left;
+  margin-left: @window-offset;
+}
+
+
 /* set pixel dimensions here and keep strings/frets/dots relative */
 .guitar-neck {
   position: relative;
@@ -42,6 +53,8 @@ h1 {
   height: @neck-height;
   background: @neck-color;
   box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.75);
+  display: inline-block; 
+  float: left;
 }
 .guitar-neck .open-notes {
   position: relative;
@@ -172,6 +185,94 @@ h1 {
 .guitar-neck .notes .mask.high-e {
   left: 80%;
 }
+
+/* here is the tabs */
+section {
+  display: none;
+  padding: 20px 0 0;
+  border-top: 1px solid #ddd;
+  p#description {
+    margin-right: 10%;
+    margin-top: 10px;
+  }
+  h4 {
+    margin-top: 2%;
+  }
+  .play-bar-wrapper {
+    border:1px solid #ccc;
+    margin-bottom:12px;
+    background:#f7f7f7;
+    margin-top: 2%;
+    margin-right: 15%;
+    .play-bar {
+      height:20px;
+      background:#33C3F0;
+      width:0%;
+    }
+  }
+  p#wrapper {
+    margin-top: 1%;
+    input#test {
+      width:200px;
+    }
+  }
+}
+
+
+label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid transparent;
+}
+
+label:before {
+  font-family: fontawesome;
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+label[for*='1']:before { content: '\f1cb'; }
+label[for*='2']:before { content: '\f17d'; }
+
+label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+input:checked + label {
+  color: #555;
+  border: 1px solid #ddd;
+  border-top: 2px solid orange;
+  border-bottom: 1px solid #fff;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2 {
+  display: block;
+}
+
+@media screen and (max-width: 650px) {
+  label {
+    font-size: 0;
+  }
+  label:before {
+    margin: 0;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  label {
+    padding: 15px;
+  }
+}
+
+
+
 /*.controls {
   position: relative;
   margin-top: 40px;

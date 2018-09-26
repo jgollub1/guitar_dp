@@ -1,3 +1,4 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 @font-face {
   font-family: 'Source Sans Pro';
   font-style: normal;
@@ -19,8 +20,15 @@ h1 {
   text-transform: uppercase;
   text-align: left;
   margin-top: 40px;
-  margin-left: 10%;
+  margin-left: 45%;
   color: #758A9A;
+  margin-bottom: 3%;
+}
+.container {
+  padding-top: 12px;
+  display: inline-block;
+  float: left;
+  margin-left: 40%;
 }
 /* set pixel dimensions here and keep strings/frets/dots relative */
 .guitar-neck {
@@ -32,6 +40,8 @@ h1 {
   height: 960px;
   background: #211f1d;
   box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.75);
+  display: inline-block;
+  float: left;
 }
 .guitar-neck .open-notes {
   position: relative;
@@ -166,6 +176,85 @@ h1 {
 }
 .guitar-neck .notes .mask.high-e {
   left: 80%;
+}
+/* here is the tabs */
+section {
+  display: none;
+  padding: 20px 0 0;
+  border-top: 1px solid #ddd;
+}
+section p#description {
+  margin-right: 10%;
+  margin-top: 10px;
+}
+section h4 {
+  margin-top: 2%;
+}
+section .play-bar-wrapper {
+  border: 1px solid #ccc;
+  margin-bottom: 12px;
+  background: #f7f7f7;
+  margin-top: 2%;
+  margin-right: 15%;
+}
+section .play-bar-wrapper .play-bar {
+  height: 20px;
+  background: #33C3F0;
+  width: 0%;
+}
+section p#wrapper {
+  margin-top: 1%;
+}
+section p#wrapper input#test {
+  width: 200px;
+}
+label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid transparent;
+}
+label:before {
+  font-family: fontawesome;
+  font-weight: normal;
+  margin-right: 10px;
+}
+label[for*='1']:before {
+  content: '\f1cb';
+}
+label[for*='2']:before {
+  content: '\f17d';
+}
+label:hover {
+  color: #888;
+  cursor: pointer;
+}
+input:checked + label {
+  color: #555;
+  border: 1px solid #ddd;
+  border-top: 2px solid orange;
+  border-bottom: 1px solid #fff;
+}
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2 {
+  display: block;
+}
+@media screen and (max-width: 650px) {
+  label {
+    font-size: 0;
+  }
+  label:before {
+    margin: 0;
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 400px) {
+  label {
+    padding: 15px;
+  }
 }
 /*.controls {
   position: relative;
