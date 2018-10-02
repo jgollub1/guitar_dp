@@ -48,6 +48,7 @@ Soundfont.instrument(ac, 'https://raw.githubusercontent.com/gleitz/midi-js-sound
 		var reader  = new FileReader();
 		var currentIndex;
 		if (file) reader.readAsArrayBuffer(file);
+		console.log('sequence is', sequence);
 
 		eventsDiv.innerHTML = '';
 

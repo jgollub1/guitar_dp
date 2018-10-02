@@ -14,7 +14,7 @@ def index():
     notes = reformat(notes)
     s_len = len(notes)
     # print 'note length', s_len
-    # print notes
+    print 'notes', notes
     # notes = [json.dumps(s) for s in notes]
     # return render_template('index_guitar.html', title='My Dick', notes=map(json.dumps, notes))
     return render_template('index_guitar.html', title='My ', sequence=notes, seqLength=s_len)
