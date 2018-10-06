@@ -1,7 +1,6 @@
 from flask import render_template
 from app import app
 from guitar_util import *
-import json
 
 @app.route('/')
 @app.route('/index')
