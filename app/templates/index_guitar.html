@@ -121,16 +121,17 @@
                         <section id="content2">
                             <article>
 
-                            <p>The <code>sublime</code> keymap defines many Sublime Text-specific
-                            bindings for CodeMirror. See the code below for an overview.</p>
+                            <p style="width:70%">As referenced in 
+                            <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec22.pdf">introductory algorithms courses</a>
+                            , we may compute a melody's optimal path across the fretboard
+                            with dynamic programming. To make this approach effective, we must form an appropriate cost function. Once specified, the solver outputs a path across the 
+                            fretboard with the lowest total cost according to compute_cost().
+                            </p>
+                            <ul style="list-style-type:disk">
+                                <li>Input consists of two sequential notes</li>
+                                <li>each note takes the form (string, fret, finger)</li>
+                            </ul>
 
-                            <p>Enable the keymap by
-                            loading <a href="./CodeMirror_ Sublime Text bindings demo_files/sublime.js"><code>keymap/sublime.js</code></a>
-                            and setting
-                            the <a href="https://codemirror.net/doc/manual.html#option_keyMap"><code>keyMap</code></a>
-                            option to <code>"sublime"</code>.</p>
-
-                            <p>(A lot of the search functionality is still missing.)
                             <script>
                                 var value = "'''\nImplement the cost function\n'''\n";
                                 value += "def compute_cost(tup1, tup2):\n";
