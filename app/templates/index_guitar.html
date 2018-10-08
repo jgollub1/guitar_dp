@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="static/css/animate.min.css">
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.35.0/codemirror.css'>
         <link rel='stylesheet' href='https://codemirror.net/theme/twilight.css'>
+        <link rel='stylesheet' href='https://codemirror.net/theme/monokai.css'>
         <!-- can remove this to speed up page load...-->
         <script type="module" src="static/js/less.js" type="text/javascript"></script>
         <link href="static/css/style_guitar.less" rel="stylesheet/less" type="text/stylesheet"/>
@@ -74,7 +75,7 @@
                             <p id="description">Upload a MIDI file of your favorite melody. This solver uses a dynamic programming algorithm to compute a corresponding path across the fretboard. Adapted from Miguel Grinberg's <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">flask tutorial</a>, <a href="https://github.com/grimmdude/MidiPlayerJS">MidiPlayerJS</a>, <a href="https://codepen.io/DreySkee/pen/bddpqM">Guitar Fretboard Visualization</a>, and <a href="https://codepen.io/oknoblich/pen/tfjFl">Responsive CSS Tabs</a>.</p>
                             <h4>Choose a Midi File</h4>
                             <p id="select-file">
-                                <input type="file" onchange="loadFile()" onclick="Player.stop()" />
+                                <input type="file" style="background: #F1F4F7" onchange="loadFile()" onclick="Player.stop()" />
                             </p>
                             <p id="loading">Loading soundfont...</p>
                             <div class="play-bar-wrapper">
@@ -100,8 +101,6 @@
                         </section>
 
                         <section id="content2">
-                            <article>
-
                             <p style="width:70%">As referenced in 
                             <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec22.pdf">introductory algorithms courses</a>
                             , we may compute a melody's optimal path across the fretboard
@@ -122,6 +121,7 @@
             </div> 
         <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.35.0/codemirror.js'></script>
         <script src='http://cdn.jsdelivr.net/codemirror/3.21.0/mode/xml/xml.js'></script>
+        <script src='http://cdn.jsdelivr.net/codemirror/3.21.0/mode/python/python.js'></script>
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
         <script src="static/lib/midiplayer.min.js"></script>
         <script src="static/lib/soundfont-player.min.js"></script>

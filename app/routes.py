@@ -2,9 +2,9 @@ from flask import render_template
 from app import app
 from guitar_util import *
 
+# every time these routes get hit, runs index()
 @app.route('/')
-@app.route('/index_guitar')
-@app.route('/static/lib')
+@app.route('/index')
 def index():
     # user = {'username': 'Miguel'}
     # posts = [{'author': {'username': 'John'},'body': 'Beautiful day in Portland!'},
