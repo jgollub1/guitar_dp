@@ -2,6 +2,10 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 @main-bg-color: brown;
+@body-size: 16px;
+@body-font: 'Lato', sans-serif;
+@body-colour: #8c8c8e;
+@input-default-background: #43657d;
 @neck-height: 960px;
 @neck-width: 280px;
 @neck-color: #211f1d;
@@ -21,11 +25,27 @@
   margin: 0;
   padding: 0;
   list-style-type: none;
+  box-sizing: border-box;
 }
 body {
+  /*background: #696969;*/
   background: #F1F4F7;
   font-family: 'Source Sans Pro', sans-serif;
   letter-spacing: 0.05em;
+  color: @body-colour;
+  padding: 20px;
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  margin: 0;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: rgba(0,0,0,.2);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.2);
 }
 h1 {
   text-transform: uppercase;
@@ -277,6 +297,46 @@ input:checked + label {
   }
 }
 
+
+// for CodeMirror
+input, textarea, select, option {
+    border: 1px dashed @input-default-background;
+    background: rgba(67, 101, 125, .2);
+    padding: 5px 12px;
+    border-radius: 3px;
+    outline: none;
+    color: @body-colour;
+    font-size: @body-size;
+    font-family: @body-font;
+    &::placeholder {
+        color: rgba(255,255,255,.2);
+        font-family: 'PT Mono', monospace;
+        font-size: 68%;
+        letter-spacing: 1px;
+    }
+    &:disabled {
+        border-color: rgba(0,0,0,.2);
+        background: rgba(67, 101, 125, .1);
+        cursor: default;
+        color: rgba(255,255,255,.2);
+        &::placeholder {
+            color: rgba(255,255,255,.1);
+        }
+    }
+    &[type=file] {
+        border: none;
+    }
+}
+textarea {
+    min-height: 200px;
+    position: relative;
+    // Doesn't look like this is possible just yet
+    &::placeholder {
+        position: absolute;
+        bottom: 5px;
+        left: 12px;
+    }
+}
 
 
 /*.controls {
