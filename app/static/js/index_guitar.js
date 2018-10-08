@@ -1,5 +1,3 @@
-// var MidiPlayer = MidiPlayer;
-// var player = require('play-sound')(opts = {})
 var slideSpeed = 300;
 var noteToShow = "All";
 var canClick = true;

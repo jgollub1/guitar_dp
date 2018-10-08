@@ -3,7 +3,8 @@ from app import app
 from guitar_util import *
 
 @app.route('/')
-@app.route('/index')
+@app.route('/index_guitar')
+@app.route('/static/lib')
 def index():
     # user = {'username': 'Miguel'}
     # posts = [{'author': {'username': 'John'},'body': 'Beautiful day in Portland!'},

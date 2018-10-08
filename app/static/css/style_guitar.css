@@ -10,11 +10,27 @@
   margin: 0;
   padding: 0;
   list-style-type: none;
+  box-sizing: border-box;
 }
 body {
-  background: #eee;
+  /*background: #696969;*/
+  background: #F1F4F7;
   font-family: 'Source Sans Pro', sans-serif;
   letter-spacing: 0.05em;
+  color: #8c8c8e;
+  padding: 20px;
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  margin: 0;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
 }
 h1 {
   text-transform: uppercase;
@@ -197,7 +213,7 @@ section .play-bar-wrapper {
   margin-top: 2%;
   margin-right: 15%;
 }
-section .play-bar-wrapper .play-bar {
+section .play-bar-wrapper #play-bar {
   height: 20px;
   background: #33C3F0;
   width: 0%;
@@ -206,6 +222,12 @@ section p#wrapper {
   margin-top: 1%;
 }
 section p#wrapper input#test {
+  width: 200px;
+}
+section p#select-file {
+  margin-top: 1%;
+}
+section p#select-file input#test {
   width: 200px;
 }
 label {
@@ -255,6 +277,67 @@ input:checked + label {
   label {
     padding: 15px;
   }
+}
+input,
+textarea,
+select,
+option {
+  border: 1px dashed #43657d;
+  background: rgba(67, 101, 125, 0.2);
+  padding: 5px 12px;
+  border-radius: 3px;
+  outline: none;
+  color: #8c8c8e;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+}
+input::placeholder,
+textarea::placeholder,
+select::placeholder,
+option::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+  font-family: 'PT Mono', monospace;
+  font-size: 68%;
+  letter-spacing: 1px;
+}
+input:disabled,
+textarea:disabled,
+select:disabled,
+option:disabled {
+  border-color: rgba(0, 0, 0, 0.2);
+  background: rgba(67, 101, 125, 0.1);
+  cursor: default;
+  color: rgba(255, 255, 255, 0.2);
+}
+input:disabled::placeholder,
+textarea:disabled::placeholder,
+select:disabled::placeholder,
+option:disabled::placeholder {
+  color: rgba(255, 255, 255, 0.1);
+}
+input[type=file],
+textarea[type=file],
+select[type=file],
+option[type=file] {
+  border: none;
+}
+textarea {
+  min-height: 200px;
+  position: relative;
+}
+textarea::placeholder {
+  position: absolute;
+  bottom: 5px;
+  left: 12px;
+}
+.CodeMirror {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  line-height: 1.3;
+  height: 500px;
+}
+.CodeMirror-linenumbers {
+  padding: 0 8px;
 }
 /*.controls {
   position: relative;
