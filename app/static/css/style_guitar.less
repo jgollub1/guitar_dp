@@ -21,8 +21,8 @@
 @string-step: 37px;
 @string-offset: -8px;
 @window-offset: 40%;
-@title-offset: 15%;
-@text-box-length: 40%;
+@title-offset: 45%;
+@width-limit: 50%;
 
 * {
   margin: 0;
@@ -53,38 +53,20 @@ body {
 h1 {
   text-transform: uppercase;
   text-align: left;
-  // margin-top: 40px;
+  top: 60px;
   // margin-left: @title-offset;
   color: #758A9A;
-  // margin-bottom: 3%;
+  margin-bottom: 5%;
 }
 .mega-container {
-  // position: relative;
-  span {
+  .container {
+    margin-left: 60px;
+    padding-top: 12px;
     display: inline-block;
-    color: @background-color;
-    margin-right: @neck-width/5;
-    // position: fixed;
+    float: left;
+    // margin-left: @window-offset;
+    max-width: @width-limit;
   }
-}
-.container {
-  padding-top: 12px;
-  // display: inline-block;
-  float: left;
-  // margin-left: @window-offset;
-  max-width: 500px;
-}
-
-p {
-  color: black;
-  // width: @text-box-length;
-  // white-space: nowrap;
-  // overflow: hidden;
-  // text-overflow: ellipsis;
-}
-
-textarea {
-  // max-width: 250px;
 }
 
 // nav a {
@@ -93,13 +75,13 @@ textarea {
 //   background: red;
 // }
 
+
 /* set pixel dimensions here and keep strings/frets/dots relative */
 .guitar-neck {
   position: relative;
   margin-top: 40px;
-  left: 50%;
-  margin-left: -40%;
-  // margin-left: @neck-margin-left;
+  // left: 50%;
+  // margin-left: -450px;
   width: @neck-width;
   height: @neck-height;
   background: @neck-color;
