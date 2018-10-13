@@ -13,112 +13,217 @@
     </head>
 
     <body>
-        <div class="guitar-neck">
-            <div class="fret first"></div>
-            <div class="fret"></div>
-            <div class="fret"></div>
-            <div class="fret"></div>
-            <div class="fret"></div>
-            <div class="fret"></div>
-            <div class="fret"></div>
-            <div class="fret"></div>
-            <div class="fret"></div>
-            <div class="fret"></div>
-            <div class="fret"></div>
-            <div class="fret"></div>
-            <div class="fret"></div>    
+        <div class="mega-container" style="display: inline-block;">
+            <!-- <span>ayyy
+                <div class="guitar-neck">
+                    <div class="fret first"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>    
 
-            <ul class="dots">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-            <ul class="strings">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+                    <ul class="dots">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <ul class="strings">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
 
-            <ul class="open-notes">
-                <li class="low-e">E1</li>
-                <li class="a">B</li>
-                <li class="d">G</li>
-                <li class="g">D</li>
-                <li class="b">A</li>
-                <li class="high-e">E2</li>
-            </ul>
-            <div class="notes">
-                <div class="mask low-e"><ul></ul></div>
-                <div class="mask a"><ul></ul></div>
-                <div class="mask d"><ul></ul></div>
-                <div class="mask g"><ul></ul></div>
-                <div class="mask b"><ul></ul></div>
-                <div class="mask high-e"><ul></ul></div>
-            </div>
-        </div>
-
-        <h1 class="animated bounce delay-.5s">🎸 MIDI Guitar Hero</h1>
-        <div class="container">
-                <div class="row">
-                    <div class="twelve columns">
-                        <input id="tab1" type="radio" name="tabs" style="display: none" checked>
-                        <label for="tab1">File Input</label>
-                        
-                        <input id="tab2" type="radio" name="tabs" style="display: none">
-                        <label for="tab2">Developer</label>
-
-                        <section id="content1">
-                            <p id="description">Upload a MIDI file of your favorite melody. This solver uses a dynamic programming algorithm to compute a corresponding path across the fretboard. Adapted from Miguel Grinberg's <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">flask tutorial</a>, <a href="https://github.com/grimmdude/MidiPlayerJS">MidiPlayerJS</a>, <a href="https://codepen.io/DreySkee/pen/bddpqM">Guitar Fretboard Visualization</a>, and <a href="https://codepen.io/oknoblich/pen/tfjFl">Responsive CSS Tabs</a>.</p>
-                            <h4>Choose a Midi File</h4>
-                            <p id="select-file">
-                                <input type="file" style="background: #F1F4F7" onchange="loadFile()" onclick="Player.stop()" />
-                            </p>
-                            <p id="loading">Loading soundfont...</p>
-                            <div class="play-bar-wrapper">
-                                <div id="play-bar"></div>
-                            </div>
-                            <p>
-                                <button class="button button-primary" id="play-button" onclick="Player.isPlaying() ? pause() : play();" disabled="disabled">Play</button>
-                                <button class="button" onclick="Player.stop()">Stop</button>
-                            </p>
-                            
-                            <h4>Tempo</h4>
-                            <p id="wrapper">
-                                <input id="test" type="range" min="50" max="200" value="100" onchange="changeTempo(this.value)" style="width:200px;" />
-                            </p>
-                            <p style="margin-top: 2%;">
-                                Tempo: <span id="tempo-display"></span> bpm<br />
-                                <input style="margin-top: 1%;" type="range" onchange="Player.pause();Player.setTempo(this.value);Player.play()" min="50" max="200">
-                                <br />
-                                <br />
-                                MIDI File Format: <span id="file-format-display"></span>
-                            </p>
-                            <div id="events" class="well" style="margin-top: 1%;"></div>
-                        </section>
-
-                        <section id="content2">
-                            <p style="width:70%">As referenced in 
-                            <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec22.pdf">introductory algorithms courses</a>
-                            , we may compute a melody's optimal path across the fretboard
-                            with dynamic programming. To make this approach effective, we must form an appropriate cost function. Once specified, the solver outputs a path across the 
-                            fretboard with the lowest total cost according to compute_cost().
-                            </p>
-                            <ul style="list-style-type:disk">
-                                <li>Input consists of two sequential notes</li>
-                                <li>each note takes the form (string, fret, finger)</li>
-                            </ul>
-
-                            <textarea id="code-block"></textarea>
-                            
-                        </section>
-                        <p style="margin-top: 1%;">By <a href="//gollub.me">Jacob Gollub</a></p>
+                    <ul class="open-notes">
+                        <li class="low-e">E1</li>
+                        <li class="a">B</li>
+                        <li class="d">G</li>
+                        <li class="g">D</li>
+                        <li class="b">A</li>
+                        <li class="high-e">E2</li>
+                    </ul>
+                    <div class="notes">
+                        <div class="mask low-e"><ul></ul></div>
+                        <div class="mask a"><ul></ul></div>
+                        <div class="mask d"><ul></ul></div>
+                        <div class="mask g"><ul></ul></div>
+                        <div class="mask b"><ul></ul></div>
+                        <div class="mask high-e"><ul></ul></div>
                     </div>
                 </div>
-            </div> 
+
+            </span>
+            <span>boooo
+                <div class="guitar-neck">
+                    <div class="fret first"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>    
+
+                    <ul class="dots">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <ul class="strings">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+
+                    <ul class="open-notes">
+                        <li class="low-e">E1</li>
+                        <li class="a">B</li>
+                        <li class="d">G</li>
+                        <li class="g">D</li>
+                        <li class="b">A</li>
+                        <li class="high-e">E2</li>
+                    </ul>
+                    <div class="notes">
+                        <div class="mask low-e"><ul></ul></div>
+                        <div class="mask a"><ul></ul></div>
+                        <div class="mask d"><ul></ul></div>
+                        <div class="mask g"><ul></ul></div>
+                        <div class="mask b"><ul></ul></div>
+                        <div class="mask high-e"><ul></ul></div>
+                    </div>
+                </div>
+
+            </span> -->
+
+            <span>ayyy
+                <div class="guitar-neck">
+                    <div class="fret first"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>
+                    <div class="fret"></div>    
+
+                    <ul class="dots">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <ul class="strings">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+
+                    <ul class="open-notes">
+                        <li class="low-e">E1</li>
+                        <li class="a">B</li>
+                        <li class="d">G</li>
+                        <li class="g">D</li>
+                        <li class="b">A</li>
+                        <li class="high-e">E2</li>
+                    </ul>
+                    <div class="notes">
+                        <div class="mask low-e"><ul></ul></div>
+                        <div class="mask a"><ul></ul></div>
+                        <div class="mask d"><ul></ul></div>
+                        <div class="mask g"><ul></ul></div>
+                        <div class="mask b"><ul></ul></div>
+                        <div class="mask high-e"><ul></ul></div>
+                    </div>
+                </div>
+            </span>
+
+            <span>ayyay
+                <div class="container">
+                    <h1 class="animated bounce delay-.5s">🎸 MIDI Guitar Hero</h1>
+                    <input id="tab1" type="radio" name="tabs" style="display: none" checked>
+                    <label for="tab1">File Input</label>
+                    
+                    <input id="tab2" type="radio" name="tabs" style="display: none">
+                    <label for="tab2">Developer</label>
+
+                    <section id="content1">
+                        <p id="description">Upload a MIDI file of your favorite melody. This solver uses a dynamic programming algorithm to compute a corresponding path across the fretboard. Adapted from Miguel Grinberg's <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">flask tutorial</a>, <a href="https://github.com/grimmdude/MidiPlayerJS">MidiPlayerJS</a>, <a href="https://codepen.io/DreySkee/pen/bddpqM">Guitar Fretboard Visualization</a>, and <a href="https://codepen.io/oknoblich/pen/tfjFl">Responsive CSS Tabs</a>.</p>
+                        <h4>Choose a Midi File</h4>
+                        <p id="select-file">
+                            <input type="file" style="background: #F1F4F7" onchange="loadFile()" onclick="Player.stop()" />
+                        </p>
+                        <p id="loading">Loading soundfont...</p>
+                        <div class="play-bar-wrapper">
+                            <div id="play-bar"></div>
+                        </div>
+                        <p>
+                            <button class="button button-primary" id="play-button" onclick="Player.isPlaying() ? pause() : play();" disabled="disabled">Play</button>
+                            <button class="button" onclick="Player.stop()">Stop</button>
+                        </p>
+                        
+                        <h4>Tempo</h4>
+                        <p id="wrapper">
+                            <input id="test" type="range" min="50" max="200" value="100" onchange="changeTempo(this.value)" style="width:200px;" />
+                        </p>
+                        <p style="margin-top: 2%;">
+                            Tempo: <span id="tempo-display"></span> bpm<br />
+                            <input style="margin-top: 1%;" type="range" onchange="Player.pause();Player.setTempo(this.value);Player.play()" min="50" max="200">
+                            <br />
+                            <br />
+                            MIDI File Format: <span id="file-format-display"></span>
+                        </p>
+                        <div id="events" class="well" style="margin-top: 1%;"></div>
+                    </section>
+
+                    <section id="content2">
+                        <p style="width:70%">As referenced in 
+                        <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec22.pdf">introductory algorithms courses</a>
+                        , we may compute a melody's optimal path across the fretboard
+                        with dynamic programming. To make this approach effective, we must form an appropriate cost function. Once specified, the solver outputs a path across the 
+                        fretboard with the lowest total cost according to compute_cost().
+                        </p>
+                        <ul style="list-style-type:disk">
+                            <li>Input consists of two sequential notes</li>
+                            <li>each note takes the form (string, fret, finger)</li>
+                        </ul>
+
+                        <textarea id="code-block"></textarea>
+                        
+                    </section>
+
+                    <p style="margin-top: 1%;">By <a href="//gollub.me">Jacob Gollub</a></p>
+                </div>
+            </span>
+        </div>
+        
         <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.35.0/codemirror.js'></script>
         <script src='http://cdn.jsdelivr.net/codemirror/3.21.0/mode/xml/xml.js'></script>
         <script src='http://cdn.jsdelivr.net/codemirror/3.21.0/mode/python/python.js'></script>

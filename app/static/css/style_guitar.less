@@ -2,10 +2,12 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 @main-bg-color: brown;
+@background-color: #F1F4F7;
 @body-size: 16px;
 @body-font: 'Lato', sans-serif;
 @body-colour: #8c8c8e;
 @input-default-background: #43657d;
+@neck-margin-left: -15%;
 @neck-height: 960px;
 @neck-width: 280px;
 @neck-color: #211f1d;
@@ -19,17 +21,18 @@
 @string-step: 37px;
 @string-offset: -8px;
 @window-offset: 40%;
-@title-offset: 45%;
+@title-offset: 15%;
+@text-box-length: 40%;
 
 * {
   margin: 0;
   padding: 0;
   list-style-type: none;
-  box-sizing: border-box;
+  // box-sizing: border-box;
 }
 body {
   /*background: #696969;*/
-  background: #F1F4F7;
+  background: @background-color;
   font-family: 'Source Sans Pro', sans-serif;
   letter-spacing: 0.05em;
   color: @body-colour;
@@ -50,25 +53,53 @@ body {
 h1 {
   text-transform: uppercase;
   text-align: left;
-  margin-top: 40px;
-  margin-left: @title-offset;
+  // margin-top: 40px;
+  // margin-left: @title-offset;
   color: #758A9A;
-  margin-bottom: 3%;
+  // margin-bottom: 3%;
+}
+.mega-container {
+  // position: relative;
+  span {
+    display: inline-block;
+    color: @background-color;
+    margin-right: @neck-width/5;
+    // position: fixed;
+  }
 }
 .container {
   padding-top: 12px;
-  display: inline-block;
+  // display: inline-block;
   float: left;
-  margin-left: @window-offset;
+  // margin-left: @window-offset;
+  max-width: 500px;
 }
 
+p {
+  color: black;
+  // width: @text-box-length;
+  // white-space: nowrap;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+}
+
+textarea {
+  // max-width: 250px;
+}
+
+// nav a {
+//   display: inline-block;
+//   padding: 5px;
+//   background: red;
+// }
 
 /* set pixel dimensions here and keep strings/frets/dots relative */
 .guitar-neck {
   position: relative;
   margin-top: 40px;
   left: 50%;
-  margin-left: -450px;
+  margin-left: -40%;
+  // margin-left: @neck-margin-left;
   width: @neck-width;
   height: @neck-height;
   background: @neck-color;
@@ -216,6 +247,7 @@ section {
     margin-top: 10px;
   }
   h4 {
+    color: black;
     margin-top: 2%;
   }
   .play-bar-wrapper {
@@ -224,6 +256,7 @@ section {
     background:#f7f7f7;
     margin-top: 2%;
     margin-right: 15%;
+    max-width: 200px;
     #play-bar {
       height:20px;
       background:#33C3F0;
