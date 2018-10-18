@@ -22,6 +22,30 @@ for (var i=0; i < notes.e.length; i++){
 	$('.mask.high-e ul').append('<li note='+notes.e[i]+'></li>')
 }
 
+var source = document.getElementById('filereader');
+MIDIParser.parse(source, function(obj){
+	const midiEvents = obj.track[0].event;
+	console.log('tracks are...', obj.track);
+	const isNoteOn = (midiObj) => midiObj.type === 9;
+	const getNote = (midiEvent) => midiEvent.data[0]; 
+	const notePath = midiEvents.filter(isNoteOn).map(getNote);
+	$.ajax({
+		url: '/read_file',
+		data: JSON.stringify(notePath),
+		contentType: 'application/json;charset=UTF-8',
+		type: 'POST',
+		success: () => {
+			console.log('succeeded sending ajax')
+		},
+		error: () => {
+			console.log('failed sending ajax')
+		},
+	})
+    // TO DO: parse obj by event type for event data
+    // Then send an ajax post request to server with note sequence info
+    console.log('PARSED THIS ONE', notePath);
+});
+
 function showNotes(noteToShow){
 	if(noteToShow == "All"){
 		$('.guitar-neck .notes li').animate({opacity:1}, 500);

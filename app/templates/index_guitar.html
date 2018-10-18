@@ -76,7 +76,7 @@
                     <p id="description">Upload a MIDI file of your favorite melody. This solver uses a dynamic programming algorithm to compute a corresponding path across the fretboard. Adapted from Miguel Grinberg's <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">flask tutorial</a>, <a href="https://github.com/grimmdude/MidiPlayerJS">MidiPlayerJS</a>, <a href="https://codepen.io/DreySkee/pen/bddpqM">Guitar Fretboard Visualization</a>, and <a href="https://codepen.io/oknoblich/pen/tfjFl">Responsive CSS Tabs</a>.</p>
                     <h4>Choose a Midi File</h4>
                     <p id="select-file">
-                        <input type="file" style="background: #F1F4F7" onchange="loadFile()" onclick="Player.stop()" />
+                        <input type="file" id="filereader" style="background: #F1F4F7" onchange="loadFile()" onclick="Player.stop()" />
                     </p>
                     <p id="loading">Loading soundfont...</p>
                     <div class="play-bar-wrapper">
@@ -84,7 +84,8 @@
                     </div>
                     <p>
                         <button class="button button-primary" id="play-button" onclick="Player.isPlaying() ? pause() : play();" disabled="disabled">Play</button>
-                        <button class="button" onclick="Player.stop()">Stop</button>
+                        <!-- <button class="button" onclick="Player.stop()">Stop</button> -->
+                        <button class="button">Stop</button>
                     </p>
                     
                     <h4>Tempo</h4>
@@ -126,6 +127,7 @@
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
         <script src="static/lib/midiplayer.min.js"></script>
         <script src="static/lib/soundfont-player.min.js"></script>
+        <script src="static/js/midi-parser.js"></script>
         <script src="static/js/app.js"></script>
         <script src="static/js/index_guitar.js"></script>
         <script>

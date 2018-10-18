@@ -63,9 +63,15 @@ def compute_path(sequence):
 	
 	return final_paths[i+1]
 
-def generate_path(fname):
-	events = midi.read_midifile(fname)[0]
-	notes = [event.data[0] for event in events if event.name == "Note On"] # add 12 move up an octave for guitar
+'''
+reformat to match s.fret on html-rendered fretboard
+'''
+def reformat(path):
+	return [".".join([str(string), str(fret)]) for string, fret, finger in path]
+
+def generate_path(notes):
+	# events = midi.read_midifile(fname)[0]
+	# notes = [event.data[0] for event in events if event.name == "Note On"] # add 12 move up an octave for guitar
 	print 'note length', len(notes)
 
 	string_d = defaultdict(list)
@@ -83,13 +89,6 @@ def generate_path(fname):
 	print 'len final_paths', len(final_paths)
 	sorted_paths = sorted(final_paths.values(), key=lambda x: x[0])
 	optimal_path = sorted_paths[0][1]
-	print 'optimal_path', optimal_path
-	print 'path length', len(optimal_path)
-	return optimal_path
-
-'''
-reformat to match s.fret on html-rendered fretboard
-'''
-def reformat(path):
-	return [".".join([str(string), str(fret)]) for string, fret, finger in path]
-
+	# print 'optimal_path', optimal_path
+	# print 'path length', len(optimal_path)
+	return reformat(optimal_path)
