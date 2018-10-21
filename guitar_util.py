@@ -51,7 +51,7 @@ def compute_path(sequence):
 	final_paths[0] = dict(zip(sequence[0], [(0, [seq]) for seq in sequence[0]])) # set one-note paths to zero cost
 	for i, current_positions in enumerate(sequence[1:]):
 	    
-	    print i, current_positions
+	    # print i, current_positions
 	    # find lowest-cost path to each position
 	    for current_tup in current_positions:
 	        local_min = sys.maxint
@@ -72,7 +72,7 @@ def reformat(path):
 def generate_path(notes):
 	# events = midi.read_midifile(fname)[0]
 	# notes = [event.data[0] for event in events if event.name == "Note On"] # add 12 move up an octave for guitar
-	print 'note length', len(notes)
+	# print 'note length', len(notes)
 
 	string_d = defaultdict(list)
 	for i, start in enumerate(STARTS):
@@ -84,9 +84,9 @@ def generate_path(notes):
 		note = nearest_note(STARTS[0], STARTS[0] + TOTAL_RANGE, note)
 		tups = string_d[note]
 		sequence += [[(s, fret, finger) for s, fret in tups for finger in FINGERS]]
-	print 'len seq', len(sequence)
+	# print 'len seq', len(sequence)
 	final_paths = compute_path(sequence)
-	print 'len final_paths', len(final_paths)
+	# print 'len final_paths', len(final_paths)
 	sorted_paths = sorted(final_paths.values(), key=lambda x: x[0])
 	optimal_path = sorted_paths[0][1]
 	# print 'optimal_path', optimal_path
