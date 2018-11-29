@@ -4,6 +4,7 @@ var AudioContext = window.AudioContext || window.webkitAudioContext || false;
 var ac = new AudioContext || new webkitAudioContext;
 var eventsDiv = document.getElementById('events');
 var noteToShow = "All";
+const instrumentUrl = 'https://raw.githubusercontent.com/gleitz/midi-js-soundfonts/gh-pages/MusyngKite/acoustic_guitar_nylon-mp3.js'
 
 var notes = {
 	E: ['1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '1.7', '1.8', '1.9', '1.10', '1.11', '1.12'],
@@ -42,7 +43,6 @@ function changeOpenNotes(){
 	});
 }
 
-
 var changeTempo = function(tempo) {
 	Player.tempo = tempo;
 }
@@ -76,7 +76,7 @@ var buildTracksHtml = function() {
 	});
 }
 
-Soundfont.instrument(ac, 'https://raw.githubusercontent.com/gleitz/midi-js-soundfonts/gh-pages/MusyngKite/acoustic_guitar_nylon-mp3.js').then(function (instrument) {
+Soundfont.instrument(ac, instrumentUrl).then(function (instrument) {
 	document.getElementById('loading').style.display = 'none';
 	document.getElementById('select-file').style.display = 'block';
 
@@ -94,15 +94,18 @@ Soundfont.instrument(ac, 'https://raw.githubusercontent.com/gleitz/midi-js-sound
 					currentIndex = globalIndex;
 					globalIndex++;
 					instrument.play(event.noteName, ac.currentTime, {gain:event.velocity/100});
-					
-					$('.guitar-neck .notes li[note="'+sequence[currentIndex]+'"]').animate(
-						{ opacity: 1 },
-						20, // short duration reduces asynchronous mismatches (but doesn't altogether prevent them...)
-						function() {
-							$('.guitar-neck .notes li[note="'+sequence[currentIndex]+'"]')
-							.fadeTo(300, 0);
-						},
-					);
+
+					// use velocity-js instead of jquery
+					$('.guitar-neck .notes li[note="'+sequence[currentIndex]+'"]')
+						.velocity({
+							properties: { opacity: 1 },
+							options: { duration: 20, easing: "easeInSine" },
+						})
+						.velocity({
+							properties: { opacity: 0 },
+							options: { duration: 300, easing: "easeInSine" },
+						});
+
 				}
 				document.getElementById('tempo-display').innerHTML = Player.tempo;
 				document.getElementById('file-format-display').innerHTML = Player.format;
@@ -118,7 +121,6 @@ Soundfont.instrument(ac, 'https://raw.githubusercontent.com/gleitz/midi-js-sound
 			// state at the time of the call, which is confusing
 
 			const midiEvents = Player.events[0];
-			console.log('this is player events....', Player.events[0]);
 			const isNoteOn = (midiEvent) => midiEvent.name === "Note on";
 			const getNote = (midiEvent) => midiEvent.noteNumber; 
 			const notePath = midiEvents.filter(isNoteOn).map(getNote);
