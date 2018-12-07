@@ -11,10 +11,15 @@ For any two adjacent notes, consider playing the first with each of four fingers
 To get started from the command line,
 
 $ git clone https://github.com/jgollub1/guitar_dp.git
+
 $ cd guitar_dp
+
 $ python3 -m venv venv
+
 $ source venv/bin/activate
+
 $ pip3 install -r requirements
+
 $ flask run
 
 Feel free to edit the cost function, either in guitar_util.py or in the codeMirror through app -> developer. For more sample midi files of solo transcriptions, see https://jazzomat.hfm-weimar.de/dbformat/synopsis/solo410.html
